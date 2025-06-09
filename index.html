@@ -1,90 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Ulk Pinterest</title>
   <style>
-    :root {
-      --bg-color: #000000;
-      --card-bg: #1a1a1a;
-      --accent: #8000ff;
-    }
-    body.roxo {
-      --bg-color: #1a001a;
-      --card-bg: #2a002a;
-    }
     body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: var(--bg-color);
+      background-color: #0a0a0a;
       color: white;
-      transition: background 0.3s;
+      font-family: Arial, sans-serif;
+      text-align: center;
     }
-    header {
-      background: var(--card-bg);
-      padding: 1rem;
+
+    .galeria {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--accent);
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 15px;
     }
-    h1 {
-      color: var(--accent);
-      margin: 0;
+
+    .galeria img {
+      width: 200px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #8000ff;
+      transition: transform 0.3s;
     }
-    .theme-toggle {
-      background: var(--accent);
-      border: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 1rem;
-      padding: 1rem;
-    }
-    .card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 5px var(--accent);
-      transition: transform 0.2s;
-    }
-    .card:hover {
-      transform: scale(1.03);
-    }
-    .card img {
-      width: 100%;
-      display: block;
+
+    .galeria img:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Ulk Pinterest</h1>
-    <button class="theme-toggle" onclick="toggleTheme()">Trocar Tema</button>
-  </header>
+  <h1>Minha Galeria Dark 💜</h1>
 
-  <main class="grid">
-    <div class="card">
-      <img src="https://i.imgur.com/A1Xn8kP.jpg" alt="Ícone anime" />
-    </div>
-    <div class="card">
-      <img src="https://i.imgur.com/XjZl8Ev.jpg" alt="Gótico" />
-    </div>
-    <div class="card">
-      <img src="https://i.imgur.com/VnRrKbg.jpg" alt="Fundo roxo" />
-    </div>
-  </main>
-
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle('roxo');
-    }
-  </script>
+  <div class="galeria">
+    <img src="041333fc9f8626e56c6c716d7a73d972.jpg" alt="Imagem 1">
+    <img src="2b02ba15e75db75c2a0adc48ff1ed88a.jpg" alt="Imagem 2">
+    <img src="3af28a36a87be6b63e3889efe27f95a3.jpg" alt="Imagem 3">
+    <img src="49a7564f2f524c616d62975aadb5995f.jpg" alt="Imagem 4">
+    <img src="adfe9049f36dccb75f3ef1b278e6a301.jpg" alt="Imagem 5">
+  </div>
 </body>
-  </html>
+</html>
