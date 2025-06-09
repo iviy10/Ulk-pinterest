@@ -2,53 +2,55 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meu Site de Ícones</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meus Pins Dark</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 1rem;
+      background-color: #222;
+      color: white;
+      border-bottom: 2px solid purple;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .gallery img {
+      width: 200px;
+      border-radius: 10px;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-  <img src="bg.gif" alt="Pixel Art Background" class="pixel-bg" />
   <header>
-    <h1>🌙 Meu Pinterest Dark</h1>
-    <div class="top-buttons">
-      <button onclick="toggleTheme()">Trocar Tema</button>
-      <button onclick="openLogin()">Login</button>
-    </div>
+    <h1>Meus Pins Dark</h1>
   </header>
 
-  <section class="gallery">
-    <div class="img-container">
-      <img src="imagens/041333fc9f8626e56c6c716d7a73d972.jpg" alt="Pin 1" />
-      <a class="download" href="imagens/041333fc9f8626e56c6c716d7a73d972.jpg" download>⬇️</a>
-    </div>
-    <div class="img-container">
-      <img src="imagens/2b02ba15e75db75c2a0adc48ff1ed88a.jpg" alt="Pin 2" />
-      <a class="download" href="imagens/2b02ba15e75db75c2a0adc48ff1ed88a.jpg" download>⬇️</a>
-    </div>
-    <div class="img-container">
-      <img src="imagens/3af28a36a87be6b63e3889efe27f95a3.jpg" alt="Pin 3" />
-      <a class="download" href="imagens/3af28a36a87be6b63e3889efe27f95a3.jpg" download>⬇️</a>
-    </div>
-    <div class="img-container">
-      <img src="imagens/49a7564f2f524c616d62975aadb5995f.jpg" alt="Pin 4" />
-      <a class="download" href="imagens/49a7564f2f524c616d62975aadb5995f.jpg" download>⬇️</a>
-    </div>
-    <div class="img-container">
-      <img src="imagens/adfe9049f36dccb75f3ef1b278e6a301.jpg" alt="Pin 5" />
-      <a class="download" href="imagens/adfe9049f36dccb75f3ef1b278e6a301.jpg" download>⬇️</a>
-    </div>
-  </section>
-
-  <div class="modal hidden" id="loginModal">
-    <div class="modal-content">
-      <span id="closeModal" onclick="closeLogin()">×</span>
-      <h2>Login</h2>
-      <input type="text" placeholder="Usuário" />
-      <input type="password" placeholder="Senha" />
-      <button>Entrar</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <main class="gallery">
+    <img src="041333fc9f8626e56c6c716d7a73d972.jpg" alt="Imagem 1" />
+    <img src="2b02ba15e75db75c2a0adc48ff1ed88a.jpg" alt="Imagem 2" />
+    <img src="3af28a36a87be6b63e3889efe27f95a3.jpg" alt="Imagem 3" />
+    <img src="49a7564f2f524c616d62975aadb5995f.jpg" alt="Imagem 4" />
+    <img src="adfe9049f36dccb75f3ef1b278e6a301.jpg" alt="Imagem 5" />
+  </main>
 </body>
 </html>
