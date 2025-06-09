@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,180 +7,178 @@
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0e0e0e;
-      --accent: #9b00f5;
+      --bg: #0d0d0d;
+      --accent: #a020f0;
       --text: #ffffff;
-      --hover: #220033;
-    }[data-theme="roxo"] {
-  --bg: #1e002e;
-  --accent: #d900ff;
-  --hover: #330044;
-}
-
-body {
-  margin: 0;
-  font-family: 'Unbounded', sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background 0.3s;
-}
-
-header {
-  background: var(--bg);
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  font-size: 1.5rem;
-  color: var(--accent);
-}
-
-.toggle-theme {
-  cursor: pointer;
-  background: var(--accent);
-  color: var(--text);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.grid {
-  column-count: 2;
-  column-gap: 1rem;
-  padding: 1rem;
-}
-
-@media (min-width: 768px) {
-  .grid {
-    column-count: 4;
-  }
-}
-
-.pin {
-  margin-bottom: 1rem;
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.pin img {
-  width: 100%;
-  border-radius: 12px;
-  display: block;
-  transition: filter 0.3s, transform 0.3s;
-}
-
-.pin:hover img {
-  filter: brightness(1.1);
-  transform: scale(1.02);
-}
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.modal-content {
-  background: var(--bg);
-  border: 2px solid var(--accent);
-  padding: 1rem;
-  border-radius: 12px;
-  max-width: 90vw;
-  max-height: 90vh;
-  text-align: center;
-}
-
-.modal-content img {
-  max-width: 100%;
-  max-height: 70vh;
-  border-radius: 12px;
-}
-
-.modal-content button {
-  margin-top: 1rem;
-  margin-inline: 0.5rem;
-  background: var(--accent);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  color: var(--text);
-  cursor: pointer;
-}
-
-.like {
-  font-size: 1.2rem;
-  background: none;
-  color: var(--accent);
-}
-
+      --hover: #3c1361;
+      --card-bg: #1a1a1a;
+      --shadow: 0 0 15px rgba(160, 32, 240, 0.5);
+    }
+    [data-theme="roxo"] {
+      --bg: #13001a;
+      --accent: #ff33cc;
+      --hover: #330033;
+      --card-bg: #210027;
+      --shadow: 0 0 15px rgba(255, 51, 204, 0.4);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Unbounded', sans-serif;
+      background: url('pixel-background.gif') center/cover fixed no-repeat var(--bg);
+      color: var(--text);
+      transition: background 0.4s ease;
+    }
+    header {
+      background: rgba(0,0,0,0.8);
+      padding: 1rem 2rem;
+      display:flex; justify-content:space-between; align-items:center;
+      position: sticky; top:0; z-index:1000;
+      border-bottom:1px solid var(--accent);
+      box-shadow: var(--shadow);
+    }
+    .logo { font-size:1.7rem; color:var(--accent); font-weight:600; text-shadow:0 0 5px var(--accent); }
+    .controls { display:flex; gap:0.5rem; }
+    .controls button {
+      background:var(--accent); color:var(--text);
+      border:none; padding:0.5rem 1rem; border-radius:8px;
+      font-weight:600; cursor:pointer; box-shadow:var(--shadow);
+      transition:0.3s;
+    }
+    .controls button:hover { background:var(--hover); }
+    .filters {
+      padding:1rem; text-align:center;
+      background:rgba(0,0,0,0.5); position:sticky; top:70px; z-index:900;
+    }
+    .filters button {
+      margin:0.3rem; padding:0.4rem 1rem;
+      border:none; background:var(--card-bg); color:var(--text);
+      border-radius:20px; cursor:pointer; box-shadow:var(--shadow);
+      transition:0.3s;
+    }
+    .filters button:hover { background:var(--accent); }
+    .grid {
+      column-count:2; column-gap:1rem; padding:2rem 1rem;
+    }
+    @media(min-width:768px){ .grid{ column-count:4; } }
+    .pin {
+      margin-bottom:1rem; break-inside:avoid;
+      border-radius:16px; background:var(--card-bg);
+      box-shadow:var(--shadow); transition:transform 0.3s;
+      overflow:hidden; position:relative;
+    }
+    .pin:hover { transform:scale(1.03); }
+    .pin img { width:100%; display:block; cursor:pointer; }
+    .add-pin {
+      position:absolute; bottom:8px; right:8px;
+      background:var(--accent); color:#fff; border:none;
+      padding:0.3rem 0.6rem; border-radius:6px; cursor:not-allowed;
+      font-size:0.9rem; box-shadow:var(--shadow);
+    }
+    .modal {
+      display:none; position:fixed; top:0; left:0;
+      width:100vw; height:100vh; background:rgba(0,0,0,0.85);
+      justify-content:center; align-items:center; z-index:2000;
+    }
+    .modal-content {
+      background:var(--card-bg); border:2px solid var(--accent);
+      padding:1.5rem; border-radius:16px; text-align:center;
+      max-width:90vw; max-height:90vh; box-shadow:var(--shadow);
+    }
+    .modal-content img {
+      max-width:100%; max-height:60vh; border-radius:10px; margin-bottom:1rem;
+    }
+    .modal-content button,
+    .modal-content a {
+      margin:0 .5rem; background:var(--accent); color:var(--text);
+      border:none; padding:.5rem 1rem; border-radius:8px;
+      cursor:pointer; box-shadow:var(--shadow); text-decoration:none;
+      font-weight:600; transition:0.3s;
+    }
+    .modal-content button:hover,
+    .modal-content a:hover { background:var(--hover); }
   </style>
 </head>
-<body>
+<body data-theme="">
   <header>
-    <div class="logo">Ulk Pins ✨</div>
-    <button class="toggle-theme">Trocar Tema</button>
-  </header>  <div class="grid" id="gallery">
-    <!-- Exemplo de imagens -->
-    <div class="pin"><img src="041333fc9f8626e56c6c716d7a73d972.jpg" alt="imagem"></div>
-    <div class="pin"><img src="2b02ba15e75db75c2a0adc48ff1ed88a.jpg" alt="imagem"></div>
-    <div class="pin"><img src="3af28a36a87be6b63e3889efe27f95a3.jpg" alt="imagem"></div>
-    <div class="pin"><img src="49a7564f2f524c616d62975aadb5995f.jpg" alt="imagem"></div>
-    <div class="pin"><img src="adfe9049f36dccb75f3ef1b278e6a301.jpg" alt="imagem"></div>
-  </div>  <div class="modal" id="modal">
+    <div class="logo">Ulk Pins 💜</div>
+    <div class="controls">
+      <button id="login-btn" disabled>Login</button>
+      <button id="add-btn" class="add-pin" disabled>+ Adicionar Pin</button>
+      <button id="theme-btn">Trocar Tema</button>
+    </div>
+  </header>
+
+  <div class="filters">
+    <button onclick="filterPins('todos')">Todos</button>
+    <button onclick="filterPins('anime')">Animes</button>
+    <button onclick="filterPins('gothic')">Gótico</button>
+    <button onclick="filterPins('banner')">Banners</button>
+    <button onclick="filterPins('bg')">Fundos</button>
+  </div>
+
+  <div class="grid" id="gallery"></div>
+
+  <div class="modal" id="modal">
     <div class="modal-content">
       <img id="modal-img" src="" alt="">
       <div>
         <button onclick="downloadImg()">Baixar</button>
-        <button class="like" onclick="likeImg(this)">❤ Curtir</button>
+        <a id="save-pin" target="_blank">Salvar no Pinterest</a>
         <button onclick="closeModal()">Fechar</button>
       </div>
     </div>
-  </div>  <script>
+  </div>
+
+  <script>
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
+    const savePin = document.getElementById('save-pin');
+    const gallery = document.getElementById('gallery');
     let currentSrc = '';
 
-    document.querySelectorAll('.pin img').forEach(img => {
-      img.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        modalImg.src = img.src;
-        currentSrc = img.src;
+    const pins = [
+      {src:'041333fc9f8626e56c6c716d7a73d972.jpg',tag:'gothic'},
+      {src:'2b02ba15e75db75c2a0adc48ff1ed88a.jpg',tag:'anime'},
+      {src:'3af28a36a87be6b63e3889efe27f95a3.jpg',tag:'banner'},
+      {src:'49a7564f2f524c616d62975aadb5995f.jpg',tag:'bg'},
+      {src:'adfe9049f36dccb75f3ef1b278e6a301.jpg',tag:'anime'}
+    ];
+
+    function loadPins(filter='todos') {
+      gallery.innerHTML = '';
+      pins.forEach(pin => {
+        if(filter==='todos'||pin.tag===filter){
+          const div=document.createElement('div');
+          div.className='pin';
+          const img=document.createElement('img');
+          img.src=pin.src; img.alt=pin.tag;
+          img.onclick=()=>openModal(pin.src);
+          div.append(img);
+          gallery.append(div);
+        }
       });
-    });
-
-    function closeModal() {
-      modal.style.display = 'none';
     }
-
-    function downloadImg() {
-      const a = document.createElement('a');
-      a.href = currentSrc;
-      a.download = currentSrc.split('/').pop();
+    function openModal(src){
+      modal.style.display='flex';
+      modalImg.src=src;
+      savePin.href=`https://pinterest.com/pin/create/button/?media=${location.href}/${src}`;
+      currentSrc=src;
+    }
+    function closeModal(){ modal.style.display='none'; }
+    function downloadImg(){
+      const a=document.createElement('a');
+      a.href=currentSrc; a.download=currentSrc.split('/').pop();
       a.click();
     }
+    function filterPins(tag){ loadPins(tag); }
 
-    function likeImg(btn) {
-      btn.textContent = '💜 Curtido';
-      btn.disabled = true;
-    }
-
-    document.querySelector('.toggle-theme').addEventListener('click', () => {
-      const theme = document.body.getAttribute('data-theme');
-      document.body.setAttribute('data-theme', theme === 'roxo' ? '' : 'roxo');
+    document.getElementById('theme-btn').addEventListener('click', ()=>{
+      const theme=document.body.getAttribute('data-theme');
+      document.body.setAttribute('data-theme', theme==='roxo'?'':'roxo');
     });
-  </script></body>
-</html>
+
+    // Início
+    loadPins();
+  </script>
+</body>
+  </html>
