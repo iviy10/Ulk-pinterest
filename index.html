@@ -2,117 +2,184 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ulk Pinterest</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <title>Ulk Pins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0e0e0e;
-      --bg-purple: #1f0129;
-      --accent: #a020f0;
-      --text: #fff;
-    }body {
+      --bg: #0e0e0e;
+      --accent: #9b00f5;
+      --text: #ffffff;
+      --hover: #220033;
+    }[data-theme="roxo"] {
+  --bg: #1e002e;
+  --accent: #d900ff;
+  --hover: #330044;
+}
+
+body {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background-color: var(--bg-dark);
+  font-family: 'Unbounded', sans-serif;
+  background-color: var(--bg);
   color: var(--text);
-  transition: background-color 0.3s;
+  transition: background 0.3s;
 }
 
 header {
-  background: #00000088;
+  background: var(--bg);
   padding: 1rem;
-  text-align: center;
-  font-size: 1.5rem;
-  color: var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: var(--accent);
-  border: none;
-  color: #fff;
-  padding: 0.5rem 1rem;
+.logo {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.toggle-theme {
   cursor: pointer;
+  background: var(--accent);
+  color: var(--text);
+  border: none;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
+  font-weight: bold;
 }
 
-.gallery {
-  columns: 2 200px;
+.grid {
+  column-count: 2;
   column-gap: 1rem;
   padding: 1rem;
 }
 
-.gallery img {
+@media (min-width: 768px) {
+  .grid {
+    column-count: 4;
+  }
+}
+
+.pin {
+  margin-bottom: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.pin img {
   width: 100%;
   border-radius: 12px;
-  margin-bottom: 1rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
+  display: block;
+  transition: filter 0.3s, transform 0.3s;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px var(--accent);
+.pin:hover img {
+  filter: brightness(1.1);
+  transform: scale(1.02);
 }
 
+/* Modal */
 .modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  z-index: 20;
+  z-index: 2000;
 }
 
-.modal img {
+.modal-content {
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  padding: 1rem;
+  border-radius: 12px;
   max-width: 90vw;
-  max-height: 80vh;
+  max-height: 90vh;
+  text-align: center;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 70vh;
   border-radius: 12px;
 }
 
-.modal .actions {
+.modal-content button {
   margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.modal .actions button {
-  padding: 0.5rem 1rem;
-  background-color: var(--accent);
-  color: #fff;
+  margin-inline: 0.5rem;
+  background: var(--accent);
   border: none;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
+  color: var(--text);
   cursor: pointer;
 }
 
-.liked {
-  color: hotpink;
+.like {
+  font-size: 1.2rem;
+  background: none;
+  color: var(--accent);
 }
 
   </style>
 </head>
 <body>
   <header>
-    Ulk Pinterest 🔮
-    <button class="theme-toggle" onclick="toggleTheme()">Trocar Tema</button>
-  </header>  <div class="gallery" id="gallery"></div>  <div class="modal" id="modal" onclick="closeModal()">
-    <div onclick="event.stopPropagation()">
-      <img id="modalImg" src="" alt="Imagem ampliada" />
-      <div class="actions">
+    <div class="logo">Ulk Pins ✨</div>
+    <button class="toggle-theme">Trocar Tema</button>
+  </header>  <div class="grid" id="gallery">
+    <!-- Exemplo de imagens -->
+    <div class="pin"><img src="041333fc9f8626e56c6c716d7a73d972.jpg" alt="imagem"></div>
+    <div class="pin"><img src="2b02ba15e75db75c2a0adc48ff1ed88a.jpg" alt="imagem"></div>
+    <div class="pin"><img src="3af28a36a87be6b63e3889efe27f95a3.jpg" alt="imagem"></div>
+    <div class="pin"><img src="49a7564f2f524c616d62975aadb5995f.jpg" alt="imagem"></div>
+    <div class="pin"><img src="adfe9049f36dccb75f3ef1b278e6a301.jpg" alt="imagem"></div>
+  </div>  <div class="modal" id="modal">
+    <div class="modal-content">
+      <img id="modal-img" src="" alt="">
+      <div>
         <button onclick="downloadImg()">Baixar</button>
-        <button id="likeBtn" onclick="toggleLike(event)">Curtir ❤️</button>
+        <button class="like" onclick="likeImg(this)">❤ Curtir</button>
+        <button onclick="closeModal()">Fechar</button>
       </div>
     </div>
   </div>  <script>
-    const imageNames = [
-      "
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    let currentSrc = '';
+
+    document.querySelectorAll('.pin img').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+        currentSrc = img.src;
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    function downloadImg() {
+      const a = document.createElement('a');
+      a.href = currentSrc;
+      a.download = currentSrc.split('/').pop();
+      a.click();
+    }
+
+    function likeImg(btn) {
+      btn.textContent = '💜 Curtido';
+      btn.disabled = true;
+    }
+
+    document.querySelector('.toggle-theme').addEventListener('click', () => {
+      const theme = document.body.getAttribute('data-theme');
+      document.body.setAttribute('data-theme', theme === 'roxo' ? '' : 'roxo');
+    });
+  </script></body>
+</html>
